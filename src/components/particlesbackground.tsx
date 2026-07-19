@@ -2,6 +2,67 @@
 
 import { useEffect, useRef } from "react";
 
+interface MouseState {
+  x: number;
+  y: number;
+  radius: number;
+}
+
+class Particle {
+  x: number;
+  y: number;
+  size: number;
+  baseX: number;
+  baseY: number;
+  speedX: number;
+  speedY: number;
+  opacity: number;
+
+  constructor(w: number, h: number) {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.baseX = this.x;
+    this.baseY = this.y;
+    this.speedX = Math.random() * 0.2 - 0.1;
+    this.speedY = Math.random() * 0.3 - 0.5; // Drift upwards
+    this.opacity = Math.random() * 0.3 + 0.1;
+  }
+
+  update(w: number, h: number, mouse: MouseState) {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    // Reset if off screen
+    if (this.y < 0) {
+      this.y = h;
+      this.x = Math.random() * w;
+    }
+    if (this.x < 0 || this.x > w) {
+      this.x = Math.random() * w;
+    }
+
+    // Mouse push interaction
+    const dx = mouse.x - this.x;
+    const dy = mouse.y - this.y;
+    const distance = Math.hypot(dx, dy);
+
+    if (distance < mouse.radius) {
+      const force = (mouse.radius - distance) / mouse.radius;
+      const angle = Math.atan2(dy, dx);
+      this.x -= Math.cos(angle) * force * 0.8;
+      this.y -= Math.sin(angle) * force * 0.8;
+    }
+  }
+
+  draw(c: CanvasRenderingContext2D) {
+    c.beginPath();
+    c.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    c.fillStyle = `rgba(245, 158, 11, ${this.opacity})`; // Gold/Amber tint
+    c.fill();
+  }
+}
+
 export default function ParticlesBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -16,62 +77,7 @@ export default function ParticlesBackground() {
     let particles: Particle[] = [];
     const isMobile = window.innerWidth < 768;
     const particleCount = isMobile ? 15 : 45; // Low count for high performance, even lower on mobile
-    const mouse = { x: -1000, y: -1000, radius: 100 };
-
-    class Particle {
-      x: number;
-      y: number;
-      size: number;
-      baseX: number;
-      baseY: number;
-      speedX: number;
-      speedY: number;
-      opacity: number;
-
-      constructor(w: number, h: number) {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.size = Math.random() * 1.5 + 0.5;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.speedX = Math.random() * 0.2 - 0.1;
-        this.speedY = Math.random() * 0.3 - 0.5; // Drift upwards
-        this.opacity = Math.random() * 0.3 + 0.1;
-      }
-
-      update(w: number, h: number) {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Reset if off screen
-        if (this.y < 0) {
-          this.y = h;
-          this.x = Math.random() * w;
-        }
-        if (this.x < 0 || this.x > w) {
-          this.x = Math.random() * w;
-        }
-
-        // Mouse push interaction
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.hypot(dx, dy);
-
-        if (distance < mouse.radius) {
-          const force = (mouse.radius - distance) / mouse.radius;
-          const angle = Math.atan2(dy, dx);
-          this.x -= Math.cos(angle) * force * 0.8;
-          this.y -= Math.sin(angle) * force * 0.8;
-        }
-      }
-
-      draw(c: CanvasRenderingContext2D) {
-        c.beginPath();
-        c.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        c.fillStyle = `rgba(168, 85, 247, ${this.opacity})`; // Purple tint
-        c.fill();
-      }
-    }
+    const mouse: MouseState = { x: -1000, y: -1000, radius: 100 };
 
     const init = () => {
       particles = [];
@@ -108,7 +114,7 @@ export default function ParticlesBackground() {
       const h = canvas.height;
 
       particles.forEach((p) => {
-        p.update(w, h);
+        p.update(w, h, mouse);
         p.draw(ctx);
       });
 

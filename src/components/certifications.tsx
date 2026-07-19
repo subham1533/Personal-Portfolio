@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Award, Calendar, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Certification {
@@ -42,6 +42,7 @@ const certifications: Certification[] = [
 export default function Certifications() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleDragEnd = (event: any, info: any) => {
     const swipeThreshold = 50;
     if (info.offset.x < -swipeThreshold && activeIndex < certifications.length - 1) {
@@ -54,7 +55,7 @@ export default function Certifications() {
   return (
     <section id="certifications" className="py-24 px-8 md:px-24 bg-black text-white relative z-20 overflow-hidden">
       {/* Background neon glows */}
-      <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-indigo-900/10 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-amber-900/5 blur-[100px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -64,7 +65,7 @@ export default function Certifications() {
       >
         {/* Header */}
         <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight flex items-center gap-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
             Certifications
           </span>
           <span className="h-[1px] flex-1 bg-white/10" />
@@ -80,10 +81,10 @@ export default function Certifications() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -6 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-indigo-500/30 transition-all duration-300 flex flex-col justify-between group shadow-xl relative overflow-hidden"
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-amber-500/30 transition-all duration-300 flex flex-col justify-between group shadow-xl relative overflow-hidden"
             >
               {/* Card visual effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="space-y-4">
                 {/* Certificate Image Container */}
@@ -99,11 +100,11 @@ export default function Certifications() {
 
                 {/* Metadata */}
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs text-indigo-400 font-semibold uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-xs text-amber-400 font-semibold uppercase tracking-wider">
                     <Award className="w-3.5 h-3.5" />
                     {cert.issuer}
                   </div>
-                  <h3 className="font-bold text-lg text-gray-200 leading-snug group-hover:text-indigo-300 transition-colors duration-300">
+                  <h3 className="font-bold text-lg text-gray-200 leading-snug group-hover:text-amber-300 transition-colors duration-300">
                     {cert.title}
                   </h3>
                 </div>
@@ -119,7 +120,7 @@ export default function Certifications() {
                   href={cert.credentialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/10 bg-white/5 hover:bg-indigo-500/10 hover:border-indigo-500/20 text-gray-400 hover:text-white transition-all duration-300"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-semibold border border-white/10 bg-white/5 hover:bg-amber-500/10 hover:border-amber-500/20 text-gray-400 hover:text-white transition-all duration-300"
                 >
                   Verify
                   <ExternalLink className="w-3 h-3" />
@@ -147,16 +148,18 @@ export default function Certifications() {
                     <div className="space-y-4">
                       {/* Certificate Image Container - width 100%, height auto-adapting */}
                       <div className="relative w-full h-44 rounded-xl overflow-hidden bg-black/40 border border-white/5 flex items-center justify-center">
-                        <img
+                        <Image
                           src={cert.image}
                           alt={cert.title}
-                          className="max-w-full max-h-full object-contain p-2"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 300px"
+                          className="object-contain p-2"
                         />
                       </div>
 
                       {/* Metadata */}
                       <div className="space-y-2">
-                        <div className="flex items-center gap-2 text-xs text-indigo-400 font-semibold uppercase tracking-wider">
+                        <div className="flex items-center gap-2 text-xs text-amber-400 font-semibold uppercase tracking-wider">
                           <Award className="w-3.5 h-3.5" />
                           {cert.issuer}
                         </div>
@@ -207,7 +210,7 @@ export default function Certifications() {
                   onClick={() => setActiveIndex(index)}
                   className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                     activeIndex === index
-                      ? "bg-indigo-500 w-6"
+                      ? "bg-amber-500 w-6"
                       : "bg-white/20 hover:bg-white/40"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}

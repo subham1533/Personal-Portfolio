@@ -7,8 +7,8 @@ const skillCategories = [
   {
     id: "programming",
     title: "Programming",
-    glowColor: "group-hover:border-blue-500/30 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]",
-    titleColor: "text-blue-400",
+    glowColor: "group-hover:border-amber-500/30 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.15)]",
+    titleColor: "text-amber-400",
     skills: [
       { name: "Python", level: 90 },
       { name: "Java", level: 70 },
@@ -19,8 +19,8 @@ const skillCategories = [
   {
     id: "frontend",
     title: "Frontend",
-    glowColor: "group-hover:border-indigo-500/30 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.15)]",
-    titleColor: "text-indigo-400",
+    glowColor: "group-hover:border-orange-500/30 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.15)]",
+    titleColor: "text-orange-400",
     skills: [
       { name: "React", level: 65 },
       { name: "Next.js", level: 65 },
@@ -43,8 +43,8 @@ const skillCategories = [
   {
     id: "aiml",
     title: "AI & ML",
-    glowColor: "group-hover:border-pink-500/30 group-hover:shadow-[0_0_20px_rgba(244,63,94,0.15)]",
-    titleColor: "text-pink-400",
+    glowColor: "group-hover:border-rose-500/30 group-hover:shadow-[0_0_20px_rgba(244,63,94,0.15)]",
+    titleColor: "text-rose-400",
     skills: [
       { name: "Scikit Learn", level: 85 },
       { name: "Pandas", level: 88 },
@@ -78,8 +78,8 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       {/* Background neon glows */}
-      <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-blue-900/10 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] rounded-full bg-emerald-900/10 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-amber-900/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] rounded-full bg-emerald-900/5 blur-[100px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -88,7 +88,7 @@ export default function Skills() {
         className="max-w-6xl mx-auto"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-12 tracking-tight flex items-center gap-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-red-400">
             Technical Skills
           </span>
           <span className="h-[1px] flex-1 bg-white/10" />
@@ -112,7 +112,7 @@ export default function Skills() {
               onClick={() => setActiveCategory(c.id)}
               className={`px-5 py-2.5 rounded-full border text-sm font-medium transition-all duration-300 ${
                 activeCategory === c.id
-                  ? "bg-gradient-to-r from-purple-500/20 to-pink-500/20 border-pink-500/30 text-white shadow-[0_0_15px_rgba(236,72,153,0.15)]"
+                  ? "bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-amber-500/30 text-white shadow-[0_0_15px_rgba(245,158,11,0.15)]"
                   : "bg-transparent border-white/10 text-gray-400 hover:text-white hover:border-white/20"
               }`}
             >

@@ -36,7 +36,7 @@ export default function GithubDashboard() {
         let starsCount = 28; // Fallback stars if repos empty
         if (reposRes.ok) {
           const reposData = await reposRes.json();
-          starsCount = reposData.reduce((acc: number, repo: any) => acc + repo.stargazers_count, 0);
+          starsCount = reposData.reduce((acc: number, repo: { stargazers_count: number }) => acc + repo.stargazers_count, 0);
         }
 
         setStats({
@@ -155,7 +155,7 @@ export default function GithubDashboard() {
 
             {/* Commits/Contributions Card */}
             <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
-              <div className="flex justify-between items-center text-pink-400">
+              <div className="flex justify-between items-center text-amber-400">
                 <Activity className="w-6 h-6" />
                 <span className="text-xs font-mono opacity-60">Commits</span>
               </div>
@@ -185,7 +185,7 @@ export default function GithubDashboard() {
                   href={`https://github.com/${stats.login}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-1.5 rounded-full border border-white/10 hover:border-emerald-500/30 bg-white/5 hover:bg-emerald-500/10 text-xs font-semibold transition-all duration-300"
+                  className="px-4 py-1.5 rounded-full border border-white/10 hover:border-amber-500/30 bg-white/5 hover:bg-amber-500/10 text-xs font-semibold transition-all duration-300"
                 >
                   View Profile
                 </a>

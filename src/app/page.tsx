@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Loader from "@/components/Loader";
 import Navbar from "@/components/navbar";
 import ParticlesBackground from "@/components/particlesbackground";
-import ScrollyCanvas from "@/components/scrollycanvas";
+import Hero3D from "@/components/hero3d";
 import About from "@/components/about";
 import Skills from "@/components/skills";
 import Projects from "@/components/projects";
@@ -41,8 +41,8 @@ export default function Home() {
           {/* Core Sticky Nav Bar */}
           <Navbar />
 
-          {/* Hero Canvas Image Sequences */}
-          <ScrollyCanvas />
+          {/* Hero Canvas 3D Particle Constellation */}
+          <Hero3D />
 
           {/* Portfolio content sections */}
           <About />

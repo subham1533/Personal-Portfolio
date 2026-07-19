@@ -103,7 +103,7 @@ export default function PageTransitionLoader() {
       if (ctx) {
         const grad = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
         grad.addColorStop(0, "rgba(255, 255, 255, 1)");
-        grad.addColorStop(0.3, "rgba(139, 92, 246, 0.8)"); // Purple hue
+        grad.addColorStop(0.3, "rgba(245, 158, 11, 0.8)"); // Gold/Amber hue
         grad.addColorStop(1, "rgba(0, 0, 0, 0)");
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, 16, 16);
@@ -164,7 +164,6 @@ export default function PageTransitionLoader() {
       const pos = geometry.attributes.position.array as Float32Array;
       for (let i = 0; i < particlesCount; i++) {
         const i3 = i * 3;
-        const currentY = pos[i3 + 1];
         
         // Helix drift movement
         pos[i3 + 1] -= 0.015 * speedFactors[i] * acceleration;
@@ -236,7 +235,7 @@ export default function PageTransitionLoader() {
             {/* Futuristic loading line with glow */}
             <div className="w-full h-[3px] bg-white/5 rounded-full overflow-hidden relative shadow-[0_0_10px_rgba(255,255,255,0.05)] border border-white/5">
               <motion.div
-                className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.8)]"
+                className="h-full bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.8)]"
                 style={{ width: `${progress}%` }}
               />
             </div>

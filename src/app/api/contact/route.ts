@@ -27,7 +27,7 @@ export async function POST(request: Request) {
       message: "Message sent successfully!",
       data: savedMessage,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Error saving contact message:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },

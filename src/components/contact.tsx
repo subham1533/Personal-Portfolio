@@ -52,7 +52,7 @@ export default function Contact() {
       value: "subham15331@gmail.com",
       href: "mailto:subham15331@gmail.com",
       icon: Mail,
-      color: "hover:text-blue-400 hover:border-blue-500/30",
+      color: "hover:text-amber-400 hover:border-amber-500/30",
     },
     {
       id: "linkedin",
@@ -60,7 +60,7 @@ export default function Contact() {
       value: "linkedin.com/in/subham-tomar-b03b66363",
       href: "https://www.linkedin.com/in/subham-tomar-b03b66363/",
       icon: Linkedin,
-      color: "hover:text-sky-400 hover:border-sky-500/30",
+      color: "hover:text-amber-400 hover:border-amber-500/30",
     },
     {
       id: "github",
@@ -68,7 +68,7 @@ export default function Contact() {
       value: "github.com/subham1533",
       href: "https://github.com/subham1533",
       icon: Github,
-      color: "hover:text-purple-400 hover:border-purple-500/30",
+      color: "hover:text-orange-400 hover:border-orange-500/30",
     },
     {
       id: "twitter",
@@ -76,13 +76,13 @@ export default function Contact() {
       value: "twitter.com/Subham1533",
       href: "https://x.com/Subham1533",
       icon: Twitter,
-      color: "hover:text-blue-300 hover:border-blue-400/30",
+      color: "hover:text-amber-300 hover:border-amber-400/30",
     },
   ];
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
-      <div className="absolute bottom-10 left-10 w-[350px] h-[350px] rounded-full bg-purple-900/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[350px] h-[350px] rounded-full bg-amber-900/5 blur-[120px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -92,7 +92,7 @@ export default function Contact() {
       >
         {/* Header */}
         <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight flex items-center gap-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
             Get In Touch
           </span>
           <span className="h-[1px] flex-1 bg-white/10" />
@@ -102,7 +102,7 @@ export default function Contact() {
           {/* Info Card (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
             <div className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
-              <h3 className="text-2xl font-bold mb-4 text-purple-300">Connect With Me</h3>
+              <h3 className="text-2xl font-bold mb-4 text-amber-300">Connect With Me</h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
                 Have a project idea, question, or just want to connect? Reach out via social media or submit the form.
               </p>
@@ -136,7 +136,7 @@ export default function Contact() {
               <div className="mt-8">
                 <a
                   href="#"
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold shadow-lg shadow-purple-500/10 hover:shadow-purple-500/25 transition-all duration-300"
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-extrabold shadow-lg shadow-amber-500/10 hover:shadow-amber-500/25 transition-all duration-300"
                 >
                   <FileText className="w-5 h-5" />
                   Download Resume
@@ -170,7 +170,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-black/50 text-white placeholder-gray-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 focus:outline-none transition-all duration-300"
+                        className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-black/50 text-white placeholder-gray-600 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 focus:outline-none transition-all duration-300"
                       />
                     </div>
 
@@ -185,7 +185,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-black/50 text-white placeholder-gray-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 focus:outline-none transition-all duration-300"
+                        className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-black/50 text-white placeholder-gray-600 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 focus:outline-none transition-all duration-300"
                       />
                     </div>
 
@@ -200,14 +200,14 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Tell me about your project..."
-                        className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-black/50 text-white placeholder-gray-600 focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 resize-none"
+                        className="w-full px-4 py-3.5 rounded-xl border border-white/10 bg-black/50 text-white placeholder-gray-600 focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/20 focus:outline-none transition-all duration-300 resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 py-4 rounded-xl border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-2 py-4 rounded-xl border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>Sending...</>
@@ -237,7 +237,7 @@ export default function Contact() {
                     </motion.div>
                     <h3 className="text-2xl font-bold text-white">Message Sent Successfully!</h3>
                     <p className="text-gray-400 text-sm max-w-sm">
-                      Thank you for reaching out. I'll get back to you as soon as possible.
+                      Thank you for reaching out. I&apos;ll get back to you as soon as possible.
                     </p>
                   </motion.div>
                 )}

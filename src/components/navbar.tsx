@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { FileText, Menu, X } from "lucide-react";
 import { Magnetic } from "./cursor";
@@ -27,7 +27,7 @@ export default function Navbar() {
     setLastY(latest);
   });
 
-  const handleResumeDownload = (e: React.MouseEvent) => {
+  const handleResumeDownload = () => {
     // Automatically trigger PDF download
     const link = document.createElement("a");
     link.href = "/resume.pdf";
@@ -60,7 +60,7 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-6 md:px-8 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="font-extrabold text-lg tracking-wider text-white select-none">
-            SUBHAM<span className="text-purple-500"> TOMAR</span>
+            SUBHAM<span className="text-amber-500"> TOMAR</span>
           </a>
 
           {/* Navigation Anchors (Desktop) */}
@@ -82,7 +82,7 @@ export default function Navbar() {
             <Magnetic>
               <button
                 onClick={handleResumeDownload}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-purple-500/30 hover:border-purple-500/60 bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 text-xs font-semibold shadow-lg shadow-purple-500/5 hover:shadow-purple-500/15 transition-all duration-300 cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-amber-500/30 hover:border-amber-500/60 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 text-xs font-semibold shadow-lg shadow-amber-500/5 hover:shadow-amber-500/15 transition-all duration-300 cursor-pointer"
               >
                 <FileText className="w-3.5 h-3.5" />
                 Resume

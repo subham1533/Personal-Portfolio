@@ -43,8 +43,8 @@ export default function About() {
   return (
     <section ref={sectionRef} id="about" className="py-20 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20 overflow-hidden">
       {/* Background radial highlight */}
-      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-pink-900/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-amber-900/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-yellow-900/5 blur-[120px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -54,7 +54,7 @@ export default function About() {
         className="max-w-6xl mx-auto"
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight flex items-center gap-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
             About Me
           </span>
           <span className="h-[1px] flex-1 bg-white/10" />
@@ -66,8 +66,8 @@ export default function About() {
             <div className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               
-              <h3 className="text-2xl font-semibold mb-4 text-purple-300">
-                Hi, I'm Subham Tomar
+              <h3 className="text-2xl font-semibold mb-4 text-amber-300">
+                Hi, I&apos;m Subham Tomar
               </h3>
               
               <p className="text-gray-300 leading-relaxed text-lg mb-4">
@@ -81,7 +81,7 @@ export default function About() {
 
             {/* Currently Exploring Grid */}
             <div className="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl">
-              <h4 className="text-lg font-semibold text-pink-300 mb-4">Currently Exploring:</h4>
+              <h4 className="text-lg font-semibold text-amber-300 mb-4">Currently Exploring:</h4>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {exploringSkills.map((skill, index) => (
                   <motion.div
@@ -91,7 +91,7 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.08, duration: 0.4 }}
                     whileHover={{ scale: 1.05, y: -2 }}
-                    className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/5 text-center text-gray-300 text-sm font-medium hover:border-pink-500/30 hover:bg-pink-500/5 transition-all duration-300 cursor-pointer shadow-sm"
+                    className="px-4 py-2.5 rounded-xl bg-white/5 border border-white/5 text-center text-gray-300 text-sm font-medium hover:border-amber-500/30 hover:bg-amber-500/5 transition-all duration-300 cursor-pointer shadow-sm"
                   >
                     {skill}
                   </motion.div>
@@ -109,7 +109,7 @@ export default function About() {
               className="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden group cursor-pointer border border-white/10"
             >
               {/* Outer Glow Effect on Hover */}
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-purple-500/50 rounded-2xl transition-all duration-500 z-10" />
+              <div className="absolute inset-0 border-2 border-transparent group-hover:border-amber-500/50 rounded-2xl transition-all duration-500 z-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
               
               <Image

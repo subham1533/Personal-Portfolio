@@ -49,7 +49,7 @@ const projects: Project[] = [
     features: ["Packet analysis", "Flow tracking", "ML anomaly detection", "Real-time dashboard"],
     demoUrl: "https://github.com/subham1533/NetScope",
     githubUrl: "https://github.com/subham1533/NetScope",
-    gradient: "from-blue-600 via-indigo-600 to-purple-600",
+    gradient: "from-amber-600 via-orange-600 to-red-600",
   },
   {
     id: 4,
@@ -101,7 +101,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       {/* Background glow highlights */}
-      <div className="absolute top-1/2 left-1/3 w-[450px] h-[450px] rounded-full bg-violet-900/10 blur-[130px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 w-[450px] h-[450px] rounded-full bg-amber-900/5 blur-[130px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -111,7 +111,7 @@ export default function Projects() {
       >
         {/* Header */}
         <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight flex items-center gap-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400">
             Selected Projects
           </span>
           <span className="h-[1px] flex-1 bg-white/10" />
@@ -213,7 +213,7 @@ function ProjectCard({
 
         {/* Card Header (Project Title & Tags) */}
         <div className="flex justify-between items-start">
-          <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-purple-300 transition-colors duration-300">
+          <h3 className="text-2xl font-bold tracking-tight text-white group-hover:text-amber-300 transition-colors duration-300">
             {project.title}
           </h3>
           <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">
@@ -232,7 +232,7 @@ function ProjectCard({
           <ul className="grid grid-cols-2 gap-x-2 gap-y-1">
             {project.features.map((feature, i) => (
               <li key={i} className="text-xs text-gray-400 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-pink-500" />
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                 {feature}
               </li>
             ))}
@@ -261,7 +261,7 @@ function ProjectCard({
             onClick={handleLikeClick}
             className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all duration-300 cursor-pointer ${
               likesCount > 0
-                ? "border-pink-500/30 bg-pink-500/5 text-pink-400 hover:bg-pink-500/10"
+                ? "border-red-500/30 bg-red-500/5 text-red-400 hover:bg-red-500/10"
                 : "border-white/10 bg-white/5 text-gray-400 hover:text-white hover:bg-white/10"
             }`}
           >
@@ -269,7 +269,7 @@ function ProjectCard({
               animate={liked ? { scale: [1, 1.4, 1] } : {}}
               transition={{ duration: 0.3 }}
             >
-              <Heart className={`w-4 h-4 ${likesCount > 0 ? "fill-pink-500 text-pink-500" : ""}`} />
+              <Heart className={`w-4 h-4 ${likesCount > 0 ? "fill-red-500 text-red-500" : ""}`} />
             </motion.div>
             <span>{likesCount} Likes</span>
           </button>
@@ -287,7 +287,7 @@ function ProjectCard({
             <a
               href={project.demoUrl}
               onClick={handleDemoClick}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white shadow-lg shadow-purple-500/20 hover:shadow-purple-500/35 transition-all duration-300"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-extrabold bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black shadow-lg shadow-amber-500/20 hover:shadow-amber-500/35 transition-all duration-300"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               Live Demo

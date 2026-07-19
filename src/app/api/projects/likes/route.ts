@@ -6,7 +6,7 @@ export async function GET() {
     const result = await query("SELECT project_slug, likes FROM project_stats");
     const likesMap: Record<string, number> = {};
     
-    result.rows.forEach((row: any) => {
+    result.rows.forEach((row: { project_slug: string; likes: number }) => {
       likesMap[row.project_slug] = row.likes;
     });
 

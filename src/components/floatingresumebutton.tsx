@@ -22,7 +22,7 @@ export default function FloatingResumeButton() {
     >
       <button
         onClick={triggerDownload}
-        className="group relative flex items-center gap-2 px-4 py-4 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white backdrop-blur-md shadow-2xl hover:border-purple-500/40 hover:bg-purple-500/10 transition-all duration-300 cursor-pointer overflow-hidden"
+        className="group relative flex items-center gap-2 px-4 py-4 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white backdrop-blur-md shadow-2xl hover:border-amber-500/40 hover:bg-amber-500/10 transition-all duration-300 cursor-pointer overflow-hidden"
       >
         <FileDown className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
         <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-out text-sm font-semibold tracking-wide block whitespace-nowrap">

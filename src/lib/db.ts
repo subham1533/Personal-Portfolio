@@ -7,6 +7,7 @@ let isMock = false;
 
 // Mock database in-memory storage for gracefull fallback
 const mockStorage = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   messages: [] as any[],
   likes: {} as Record<string, number>,
 };
@@ -70,6 +71,7 @@ initializeDatabase().catch(err => {
   console.error("Database initialization failed:", err);
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function query(text: string, params?: any[]) {
   if (isMock || !pool) {
     // Return mock handlers for local dev without a DB

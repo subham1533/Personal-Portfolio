@@ -70,7 +70,7 @@ export default function Cursor() {
     <>
       {/* Outer Glowing Circle Trail */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-pink-500/80 pointer-events-none z-50 mix-blend-screen bg-pink-500/10 shadow-[0_0_15px_rgba(236,72,153,0.5)]"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-amber-500/80 pointer-events-none z-50 mix-blend-screen bg-amber-500/10 shadow-[0_0_15px_rgba(245,158,11,0.5)]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -96,7 +96,7 @@ export default function Cursor() {
   );
 }
 
-export function Magnetic({ children, range = 50 }: { children: React.ReactNode; range?: number }) {
+export function Magnetic({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 

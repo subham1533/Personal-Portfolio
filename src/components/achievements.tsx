@@ -9,7 +9,7 @@ interface AchievementItem {
   label: string;
   targetValue: number;
   suffix: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   color: string;
 }
 
@@ -20,7 +20,7 @@ const achievements: AchievementItem[] = [
     targetValue: 10,
     suffix: "+",
     icon: FolderGit,
-    color: "from-blue-500 to-indigo-500",
+    color: "from-yellow-500 to-amber-500",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const achievements: AchievementItem[] = [
     targetValue: 1000,
     suffix: "+",
     icon: BrainCircuit,
-    color: "from-pink-500 to-rose-500",
+    color: "from-orange-500 to-rose-500",
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ export default function Achievements() {
       >
         {/* Header */}
         <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight flex items-center gap-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-orange-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
             Achievements
           </span>
           <span className="h-[1px] flex-1 bg-white/10" />
@@ -78,15 +78,10 @@ export default function Achievements() {
 function CounterCard({ item, index }: { item: AchievementItem; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(item.label === "AI/ML Enthusiast" ? 1 : 0);
 
   useEffect(() => {
-    if (!isInView) return;
-
-    if (item.label === "AI/ML Enthusiast") {
-      setCount(1);
-      return;
-    }
+    if (!isInView || item.label === "AI/ML Enthusiast") return;
 
     let start = 0;
     const duration = 1.5; // seconds
@@ -116,11 +111,11 @@ function CounterCard({ item, index }: { item: AchievementItem; index: number }) 
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -5, scale: 1.02 }}
-      className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-pink-500/20 transition-all duration-300 flex flex-col items-center justify-center text-center shadow-xl relative overflow-hidden"
+      className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-amber-500/20 transition-all duration-300 flex flex-col items-center justify-center text-center shadow-xl relative overflow-hidden"
     >
       <div className={`absolute -inset-[1px] bg-gradient-to-r ${item.color} rounded-2xl opacity-0 hover:opacity-10 transition-opacity duration-500 pointer-events-none -z-10`} />
 
-      <div className={`p-4 rounded-full bg-gradient-to-br ${item.color} bg-opacity-20 text-white mb-4 shadow-lg shadow-pink-500/5`}>
+      <div className={`p-4 rounded-full bg-gradient-to-br ${item.color} bg-opacity-20 text-white mb-4 shadow-lg shadow-amber-500/5`}>
         <IconComponent className="w-6 h-6" />
       </div>
 
@@ -133,7 +128,7 @@ function CounterCard({ item, index }: { item: AchievementItem; index: number }) 
           ) : (
             <>
               {count}
-              <span className="text-pink-500">{item.suffix}</span>
+              <span className="text-amber-500">{item.suffix}</span>
             </>
           )}
         </h3>
