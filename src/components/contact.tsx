@@ -104,8 +104,8 @@ export default function Contact() {
     {
       id: "twitter",
       label: "Twitter",
-      value: "twitter.com/Subham1533",
-      href: "https://x.com/Subham1533",
+      value: "twitter.com/Subham15331",
+      href: "https://x.com/Subham15331",
       icon: Twitter,
       color: "hover:text-amber-300 hover:border-amber-400/30",
     },
