@@ -43,7 +43,7 @@ export default function Contact() {
 
   const handleResumeDownload = () => {
     // Trigger tracking in background
-    fetch("/api/track", {
+    fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "resume", label: "Contact Section Resume Button" }),
@@ -60,7 +60,7 @@ export default function Contact() {
   };
 
   const handleContactLinkClick = (id: string, label: string) => {
-    fetch("/api/track", {
+    fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -191,7 +191,7 @@ export default function Hero3D() {
 
   const handleResumeDownload = () => {
     // Trigger tracking in background
-    fetch("/api/track", {
+    fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "resume", label: "Hero Resume Button" }),

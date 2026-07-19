@@ -29,7 +29,7 @@ export default function Navbar() {
 
   const handleResumeDownload = () => {
     // Trigger tracking in background
-    fetch("/api/track", {
+    fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "resume", label: "Navbar Resume Button" }),

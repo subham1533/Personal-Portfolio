@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     userAgent = headers.get("user-agent") || "Unknown Browser";
     referrer = headers.get("referer") || "Direct / Unknown";
 
-    console.log(`[Track] Click registered: type=${type}, label=${label}, IP=${ipAddress}`);
+    console.log(`[Notify] Click registered: type=${type}, label=${label}, IP=${ipAddress}`);
 
     // 2. Save click to PostgreSQL database
     let dbLogged = false;
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       );
       dbLogged = true;
     } catch (dbError) {
-      console.error("[Track] Database logging failed:", dbError);
+      console.error("[Notify] Database logging failed:", dbError);
     }
 
     // 3. Send Email Alert for critical tracking events (e.g. resume or email link clicks)
@@ -227,10 +227,10 @@ export async function POST(request: Request) {
           await transporter.sendMail(mailOptions);
           emailSent = true;
           emailStatus = "Success";
-          console.log(`[Track API] Notification email successfully sent to ${receiver}`);
+          console.log(`[Notify API] Notification email successfully sent to ${receiver}`);
         } catch (mailError) {
           emailStatus = "Failed";
-          console.error("[Track API] Failed to send email via SMTP:", mailError);
+          console.error("[Notify API] Failed to send email via SMTP:", mailError);
         }
       } else {
         emailStatus = "SMTP Not Configured";
@@ -247,7 +247,7 @@ export async function POST(request: Request) {
       },
     });
   } catch (error) {
-    console.error("[Track API] Critical tracking error:", error);
+    console.error("[Notify API] Critical tracking error:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

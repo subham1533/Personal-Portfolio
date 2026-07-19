@@ -6,7 +6,7 @@ import { FileDown } from "lucide-react";
 export default function FloatingResumeButton() {
   const triggerDownload = () => {
     // Trigger tracking in background
-    fetch("/api/track", {
+    fetch("/api/notify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "resume", label: "Floating Resume Button" }),
