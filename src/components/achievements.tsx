@@ -50,7 +50,7 @@ const achievements: AchievementItem[] = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-20 px-8 md:px-24 bg-black text-white relative z-20">
+    <section id="achievements" className="py-20 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function Achievements() {
           <span className="h-[1px] flex-1 bg-white/10" />
         </h2>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {achievements.map((item, index) => (
             <CounterCard key={item.id} item={item} index={index} />
           ))}

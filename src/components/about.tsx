@@ -41,7 +41,7 @@ export default function About() {
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 px-8 md:px-24 bg-black text-white relative z-20 overflow-hidden">
+    <section ref={sectionRef} id="about" className="py-20 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20 overflow-hidden">
       {/* Background radial highlight */}
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-pink-900/10 blur-[120px] pointer-events-none" />

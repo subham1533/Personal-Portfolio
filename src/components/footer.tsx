@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-black text-gray-400 py-16 px-8 md:px-24 border-t border-white/5 overflow-hidden z-20">
+    <footer className="relative bg-black text-gray-400 py-16 px-4 sm:px-8 md:px-24 border-t border-white/5 overflow-hidden z-20">
       {/* Animated glowing strip at the top of the footer */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent animate-pulse" />
 

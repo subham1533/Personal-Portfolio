@@ -1,8 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Award, Calendar, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Award, Calendar, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Certification {
   id: number;
@@ -41,8 +40,19 @@ const certifications: Certification[] = [
 ];
 
 export default function Certifications() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleDragEnd = (event: any, info: any) => {
+    const swipeThreshold = 50;
+    if (info.offset.x < -swipeThreshold && activeIndex < certifications.length - 1) {
+      setActiveIndex((prev) => prev + 1);
+    } else if (info.offset.x > swipeThreshold && activeIndex > 0) {
+      setActiveIndex((prev) => prev - 1);
+    }
+  };
+
   return (
-    <section id="certifications" className="py-24 px-8 md:px-24 bg-black text-white relative z-20">
+    <section id="certifications" className="py-24 px-8 md:px-24 bg-black text-white relative z-20 overflow-hidden">
       {/* Background neon glows */}
       <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-indigo-900/10 blur-[100px] pointer-events-none" />
 
@@ -60,8 +70,8 @@ export default function Certifications() {
           <span className="h-[1px] flex-1 bg-white/10" />
         </h2>
 
-        {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Certifications Grid (Desktop) */}
+        <div className="hidden md:grid grid-cols-3 gap-8">
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.id}
@@ -117,6 +127,103 @@ export default function Certifications() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Certifications Carousel (Mobile/Tablet) */}
+        <div className="md:hidden relative w-full flex flex-col items-center">
+          <div className="w-full overflow-hidden relative min-h-[380px]">
+            <motion.div
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={handleDragEnd}
+              animate={{ x: `-${activeIndex * 100}%` }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="flex w-full cursor-grab active:cursor-grabbing"
+            >
+              {certifications.map((cert) => (
+                <div key={cert.id} className="w-full shrink-0 px-2 select-none">
+                  <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between min-h-[360px] shadow-xl relative overflow-hidden">
+                    <div className="space-y-4">
+                      {/* Certificate Image Container - width 100%, height auto-adapting */}
+                      <div className="relative w-full h-44 rounded-xl overflow-hidden bg-black/40 border border-white/5 flex items-center justify-center">
+                        <img
+                          src={cert.image}
+                          alt={cert.title}
+                          className="max-w-full max-h-full object-contain p-2"
+                        />
+                      </div>
+
+                      {/* Metadata */}
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 text-xs text-indigo-400 font-semibold uppercase tracking-wider">
+                          <Award className="w-3.5 h-3.5" />
+                          {cert.issuer}
+                        </div>
+                        <h3 className="font-bold text-base text-gray-200 leading-snug">
+                          {cert.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Date & Button */}
+                    <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 font-mono">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {cert.date}
+                      </div>
+                      <a
+                        href={cert.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 px-4 py-2.5 rounded-lg text-xs font-semibold border border-white/10 bg-white/5 text-gray-400 hover:text-white transition-all duration-300"
+                      >
+                        Verify
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Navigation Controls & Pagination Dots */}
+          <div className="flex items-center justify-between w-full mt-6 px-4">
+            <button
+              onClick={() => activeIndex > 0 && setActiveIndex(activeIndex - 1)}
+              disabled={activeIndex === 0}
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {certifications.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    activeIndex === index
+                      ? "bg-indigo-500 w-6"
+                      : "bg-white/20 hover:bg-white/40"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => activeIndex < certifications.length - 1 && setActiveIndex(activeIndex + 1)}
+              disabled={activeIndex === certifications.length - 1}
+              className="p-3 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </motion.div>
     </section>

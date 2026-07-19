@@ -14,7 +14,8 @@ export default function ParticlesBackground() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 45; // Low count for high performance
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 15 : 45; // Low count for high performance, even lower on mobile
     const mouse = { x: -1000, y: -1000, radius: 100 };
 
     class Particle {

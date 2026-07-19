@@ -5,7 +5,7 @@ import { GraduationCap, Calendar, Award, MapPin } from "lucide-react";
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 px-8 md:px-24 bg-black text-white relative z-20">
+    <section id="education" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       {/* Background glow */}
       <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] rounded-full bg-blue-900/5 blur-[100px] pointer-events-none" />
 
@@ -24,7 +24,7 @@ export default function Education() {
         </h2>
 
         {/* Timeline container */}
-        <div className="relative border-l border-white/10 pl-8 ml-4 md:ml-12 space-y-12">
+        <div className="relative border-l border-white/10 pl-6 ml-2 sm:pl-8 sm:ml-4 md:ml-12 space-y-12">
           {/* Vertical line fill animation */}
           <motion.div
             initial={{ height: 0 }}
@@ -37,7 +37,7 @@ export default function Education() {
           {/* Timeline Item 1 */}
           <div className="relative">
             {/* Timeline Dot Indicator */}
-            <span className="absolute -left-[41px] top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black border border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]">
+            <span className="absolute -left-[33px] sm:-left-[41px] top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-black border border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]">
               <span className="h-2 w-2 rounded-full bg-blue-400" />
             </span>
 

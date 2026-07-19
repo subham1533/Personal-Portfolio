@@ -76,7 +76,7 @@ export default function Skills() {
       : skillCategories.filter((c) => c.id === activeCategory);
 
   return (
-    <section id="skills" className="py-24 px-8 md:px-24 bg-black text-white relative z-20">
+    <section id="skills" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       {/* Background neon glows */}
       <div className="absolute top-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-blue-900/10 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 left-1/4 w-[350px] h-[350px] rounded-full bg-emerald-900/10 blur-[100px] pointer-events-none" />

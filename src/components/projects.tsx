@@ -99,7 +99,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-24 px-8 md:px-24 bg-black text-white relative z-20">
+    <section id="projects" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       {/* Background glow highlights */}
       <div className="absolute top-1/2 left-1/3 w-[450px] h-[450px] rounded-full bg-violet-900/10 blur-[130px] pointer-events-none" />
 
@@ -154,6 +154,9 @@ function ProjectCard({
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-12, 12]), { damping: 20, stiffness: 200 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Disable 3D tilt effect on mobile/touch screens
+    if (window.innerWidth < 768) return;
+
     const card = cardRef.current;
     if (!card) return;
 
@@ -201,7 +204,7 @@ function ProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="group relative rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden transition-colors duration-500 shadow-2xl flex flex-col justify-between min-h-[380px] p-8"
+      className="group relative rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden transition-colors duration-500 shadow-2xl flex flex-col justify-between min-h-[380px] p-6 sm:p-8"
     >
       {/* 3D Content Container */}
       <div style={{ transform: "translateZ(30px)" }} className="relative z-10 space-y-4">

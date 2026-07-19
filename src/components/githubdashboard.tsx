@@ -91,7 +91,7 @@ export default function GithubDashboard() {
   };
 
   return (
-    <section id="github" className="py-24 px-8 md:px-24 bg-black text-white relative z-20">
+    <section id="github" className="py-24 px-4 sm:px-8 md:px-24 bg-black text-white relative z-20">
       <div className="absolute top-1/4 right-1/3 w-[380px] h-[380px] rounded-full bg-emerald-900/10 blur-[110px] pointer-events-none" />
 
       <motion.div
@@ -110,9 +110,9 @@ export default function GithubDashboard() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Stats Counters Grid (5 cols) */}
-          <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Repos Card */}
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
+            <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
               <div className="flex justify-between items-center text-emerald-400">
                 <GitBranch className="w-6 h-6" />
                 <span className="text-xs font-mono opacity-60">Repos</span>
@@ -126,7 +126,7 @@ export default function GithubDashboard() {
             </div>
 
             {/* Followers Card */}
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
+            <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
               <div className="flex justify-between items-center text-teal-400">
                 <Users className="w-6 h-6" />
                 <span className="text-xs font-mono opacity-60">Followers</span>
@@ -140,7 +140,7 @@ export default function GithubDashboard() {
             </div>
 
             {/* Stars Card */}
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
+            <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
               <div className="flex justify-between items-center text-yellow-400">
                 <Star className="w-6 h-6" />
                 <span className="text-xs font-mono opacity-60">Stars</span>
@@ -154,7 +154,7 @@ export default function GithubDashboard() {
             </div>
 
             {/* Commits/Contributions Card */}
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
+            <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col justify-between hover:border-emerald-500/30 transition-all duration-300">
               <div className="flex justify-between items-center text-pink-400">
                 <Activity className="w-6 h-6" />
                 <span className="text-xs font-mono opacity-60">Commits</span>
@@ -169,7 +169,7 @@ export default function GithubDashboard() {
           </div>
 
           {/* Activity Graph Section (7 cols) */}
-          <div className="lg:col-span-7 p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/30 transition-all duration-300 flex flex-col justify-between">
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/30 transition-all duration-300 flex flex-col justify-between">
             <div>
               <div className="flex justify-between items-center mb-6">
                 <div className="flex items-center gap-3">
