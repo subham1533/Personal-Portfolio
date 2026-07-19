@@ -5,6 +5,15 @@ import { FileDown } from "lucide-react";
 
 export default function FloatingResumeButton() {
   const triggerDownload = () => {
+    // Trigger tracking in background
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "resume", label: "Floating Resume Button" }),
+    }).catch((err) =>
+      console.error("Failed to track resume download:", err)
+    );
+
     const link = document.createElement("a");
     link.href = "/resume.pdf";
     link.download = "Subham_Tomar_Resume.pdf";

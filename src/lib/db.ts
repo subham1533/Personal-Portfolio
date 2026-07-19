@@ -56,6 +56,29 @@ export async function initializeDatabase() {
           views INTEGER DEFAULT 0
         );
       `);
+
+      // Create resume_clicks table
+      await client.query(`
+        CREATE TABLE IF NOT EXISTS resume_clicks (
+          id SERIAL PRIMARY KEY,
+          ip_address VARCHAR(45),
+          user_agent TEXT,
+          referrer TEXT,
+          clicked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
+
+      // Create portfolio_clicks table
+      await client.query(`
+        CREATE TABLE IF NOT EXISTS portfolio_clicks (
+          id SERIAL PRIMARY KEY,
+          click_type VARCHAR(50) NOT NULL,
+          ip_address VARCHAR(45),
+          user_agent TEXT,
+          referrer TEXT,
+          clicked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+      `);
       console.log("Database tables verified/created successfully.");
     } finally {
       client.release();
@@ -85,6 +108,31 @@ export async function query(text: string, params?: any[]) {
       };
       mockStorage.messages.push(msg);
       return { rows: [msg] };
+    }
+
+    if (text.includes("INSERT INTO resume_clicks")) {
+      const click = {
+        id: Math.floor(Math.random() * 1000000),
+        ip_address: params?.[0],
+        user_agent: params?.[1],
+        referrer: params?.[2],
+        clicked_at: new Date(),
+      };
+      console.log("Mock DB: Logged resume click:", click);
+      return { rows: [click] };
+    }
+
+    if (text.includes("INSERT INTO portfolio_clicks")) {
+      const click = {
+        id: Math.floor(Math.random() * 1000000),
+        click_type: params?.[0],
+        ip_address: params?.[1],
+        user_agent: params?.[2],
+        referrer: params?.[3],
+        clicked_at: new Date(),
+      };
+      console.log("Mock DB: Logged portfolio click:", click);
+      return { rows: [click] };
     }
 
     if (text.includes("INSERT INTO project_stats") || text.includes("ON CONFLICT")) {

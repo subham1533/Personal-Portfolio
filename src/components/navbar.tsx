@@ -28,6 +28,15 @@ export default function Navbar() {
   });
 
   const handleResumeDownload = () => {
+    // Trigger tracking in background
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "resume", label: "Navbar Resume Button" }),
+    }).catch((err) =>
+      console.error("Failed to track resume download:", err)
+    );
+
     // Automatically trigger PDF download
     const link = document.createElement("a");
     link.href = "/resume.pdf";

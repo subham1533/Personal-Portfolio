@@ -41,6 +41,37 @@ export default function Contact() {
     }
   };
 
+  const handleResumeDownload = () => {
+    // Trigger tracking in background
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "resume", label: "Contact Section Resume Button" }),
+    }).catch((err) =>
+      console.error("Failed to track resume download:", err)
+    );
+
+    const link = document.createElement("a");
+    link.href = "/resume.pdf";
+    link.download = "Subham_Tomar_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleContactLinkClick = (id: string, label: string) => {
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: id === "email" ? "email_link" : "social_link",
+        label: `${label} Click`,
+      }),
+    }).catch((err) =>
+      console.error("Failed to track contact link click:", err)
+    );
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -116,6 +147,7 @@ export default function Contact() {
                       href={c.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => handleContactLinkClick(c.id, c.label)}
                       className={`flex items-center gap-4 p-4 rounded-xl border border-white/5 bg-white/5 text-gray-300 transition-all duration-300 ${c.color}`}
                     >
                       <div className="p-2.5 rounded-lg bg-black/40 text-inherit">
@@ -134,13 +166,13 @@ export default function Contact() {
 
               {/* Resume download button */}
               <div className="mt-8">
-                <a
-                  href="#"
-                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-extrabold shadow-lg shadow-amber-500/10 hover:shadow-amber-500/25 transition-all duration-300"
+                <button
+                  onClick={handleResumeDownload}
+                  className="flex items-center justify-center gap-2 w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-black font-extrabold shadow-lg shadow-amber-500/10 hover:shadow-amber-500/25 transition-all duration-300 cursor-pointer"
                 >
                   <FileText className="w-5 h-5" />
                   Download Resume
-                </a>
+                </button>
               </div>
             </div>
           </div>

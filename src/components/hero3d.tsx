@@ -190,6 +190,15 @@ export default function Hero3D() {
   }, []);
 
   const handleResumeDownload = () => {
+    // Trigger tracking in background
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "resume", label: "Hero Resume Button" }),
+    }).catch((err) =>
+      console.error("Failed to track resume download:", err)
+    );
+
     const link = document.createElement("a");
     link.href = "/resume.pdf";
     link.download = "Subham_Tomar_Resume.pdf";
